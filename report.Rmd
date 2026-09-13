@@ -1,0 +1,37 @@
+---
+title: "Snail Growth Experiment"
+author: "Linford Otoo"
+date: "2026-09-13"
+output: pdf_document
+---
+
+## Growth Rate by Temperature and Population
+
+```{r}
+df.t <- read.csv('/Users/mcdonaldlab1/Desktop/R/R_week3/tempExperiment_v2.csv')
+
+df.t$temp <- factor(df.t$temp)
+
+boxplot(df.t$growthRate ~ df.t$temp + df.t$pop,
+        names = c('10', '20', '10', '20'),
+        at = c(1, 2, 4, 5),
+        ylab = 'Growth rate mm/day',
+        xlab = '')
+
+mtext('Pop 1', side = 1, at = 1.5, line = 3)
+mtext('Pop 2', side = 1, at = 4.5, line = 3)
+```
+
+## ANOVA Results
+
+```{r}
+m1.summary <- readRDS('/Users/mcdonaldlab1/Desktop/R/R_week3/m1.summary.rds')
+
+m1.summary
+```
+
+## Interpretation
+
+The ANOVA results show that temperature, population, and the interaction between temperature and population were not statistically significant at the 0.05 level. Temperature had a p-value of 0.0798, population had a p-value of 0.2379, and the interaction had a p-value of 0.5974.
+
+Then save this file as: report.rmd
